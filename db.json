@@ -1,0 +1,64 @@
+{
+    "mailboxes": [
+        {
+            "id": "1",
+            "mailAddress": "thoba@sample1.com",
+            "messages": [
+                {
+                    "id": "1",
+                    "received": "2021-09-10T10:00:00",
+                    "from": "thoba@sample2.com",
+                    "subject": "Coffee",
+                    "body": "Hey, want to grab a cup of coffee?",
+                    "label": "Casual"
+                },
+                {
+                    "id": "2",
+                    "received": "2021-09-11T06:00:00",
+                    "from": "thoba@sample2.com",
+                    "subject": "Leave Approval",
+                    "body": "Hey there, hope you're doing well. Please approve my leave request for Tuesday.",
+                    "label": "Task"
+                },
+                {
+                    "id": "3",
+                    "received": "2021-09-11T09:15:00",
+                    "from": "thoba@sample1.com",
+                    "subject": "RE: Leave Approval",
+                    "body": "Hello. I'm well thanks. Full-day leave please.",
+                    "label": "Task"
+                }
+            ]
+        },
+        {
+            "id": "2",
+            "mailAddress": "thoba@sample2.com",
+            "messages": [
+                {
+                    "id": "1",
+                    "received": "2021-09-10T10:05:00",
+                    "from": "thoba@sample1.com",
+                    "subject": "RE: Coffee",
+                    "body": "Sure thing!",
+                    "label": "Normal"
+                },
+                {
+                    "id": "2",
+                    "received": "2021-09-11T09:00:00",
+                    "from": "thoba@sample1.com",
+                    "subject": "RE: Leave Approval",
+                    "body": "Hello. I'm well thanks. Do you require half or full-day leave?.",
+                    "label": "Request"
+                },
+                {
+                    "id": "3",
+                    "received": "2021-09-11T09:25:00",
+                    "from": "thoba@sample1.com",
+                    "subject": "RE: Leave Approval",
+                    "body": "Sure! Your leave is approved.",
+                    "label": "Request"
+                }
+            ]
+        }
+    ]
+}
