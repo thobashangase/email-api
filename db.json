@@ -1,64 +1,174 @@
 {
-    "mailboxes": [
-        {
-            "id": "1",
-            "mailAddress": "thoba@sample1.com",
-            "messages": [
-                {
-                    "id": "1",
-                    "received": "2021-09-10T10:00:00",
-                    "from": "thoba@sample2.com",
-                    "subject": "Coffee",
-                    "body": "Hey, want to grab a cup of coffee?",
-                    "label": "Casual"
-                },
-                {
-                    "id": "2",
-                    "received": "2021-09-11T06:00:00",
-                    "from": "thoba@sample2.com",
-                    "subject": "Leave Approval",
-                    "body": "Hey there, hope you're doing well. Please approve my leave request for Tuesday.",
-                    "label": "Task"
-                },
-                {
-                    "id": "3",
-                    "received": "2021-09-11T09:15:00",
-                    "from": "thoba@sample1.com",
-                    "subject": "RE: Leave Approval",
-                    "body": "Hello. I'm well thanks. Full-day leave please.",
-                    "label": "Task"
-                }
-            ]
-        },
-        {
-            "id": "2",
-            "mailAddress": "thoba@sample2.com",
-            "messages": [
-                {
-                    "id": "1",
-                    "received": "2021-09-10T10:05:00",
-                    "from": "thoba@sample1.com",
-                    "subject": "RE: Coffee",
-                    "body": "Sure thing!",
-                    "label": "Normal"
-                },
-                {
-                    "id": "2",
-                    "received": "2021-09-11T09:00:00",
-                    "from": "thoba@sample1.com",
-                    "subject": "RE: Leave Approval",
-                    "body": "Hello. I'm well thanks. Do you require half or full-day leave?.",
-                    "label": "Request"
-                },
-                {
-                    "id": "3",
-                    "received": "2021-09-11T09:25:00",
-                    "from": "thoba@sample1.com",
-                    "subject": "RE: Leave Approval",
-                    "body": "Sure! Your leave is approved.",
-                    "label": "Request"
-                }
-            ]
-        }
-    ]
+  "mailboxes": [
+    {
+      "id": 1,
+      "mailAddress": "thoba@sample1.com"
+    },
+    {
+      "id": 2,
+      "mailAddress": "thoba@sample2.com"
+    }
+  ],
+  "labels": [
+    {
+      "id": 1,
+      "label": "Casual",
+      "mailboxId": 1
+    },
+    {
+      "id": 2,
+      "label": "Task",
+      "mailboxId": 1
+    },
+    {
+      "id": 3,
+      "label": "Request",
+      "mailboxId": 2
+    },
+    {
+      "id": 4,
+      "label": "Normal",
+      "mailboxId": 2
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "mailboxId": 1,
+      "labelId": 1,
+      "received": "2021-09-10T10:00:00",
+      "from": "thoba@sample2.com",
+      "subject": "Coffee",
+      "body": "Hey, want to grab a cup of coffee?",
+      "isDeleted": 1
+    },
+    {
+      "id": 2,
+      "mailboxId": 2,
+      "labelId": 4,
+      "received": "2021-09-10T10:05:00",
+      "from": "thoba@sample1.com",
+      "subject": "RE: Coffee",
+      "body": "Sure thing!",
+      "isDeleted": 0
+    },
+    {
+      "id": 3,
+      "mailboxId": 1,
+      "labelId": 2,
+      "received": "2021-09-11T06:00:00",
+      "from": "thoba@sample2.com",
+      "subject": "Leave Approval",
+      "body": "Hey there, hope you're doing well. Please approve my leave request for Tuesday.",
+      "isDeleted": 0
+    },
+    {
+      "id": 4,
+      "mailboxId": 2,
+      "labelId": 3,
+      "received": "2021-09-11T09:00:00",
+      "from": "thoba@sample1.com",
+      "subject": "RE: Leave Approval",
+      "body": "Hello. I'm well thanks. Do you require half or full-day leave?.",
+      "isDeleted": 0
+    },
+    {
+      "id": 5,
+      "mailboxId": 1,
+      "labelId": 2,
+      "received": "2021-09-11T09:15:00",
+      "from": "thoba@sample1.com",
+      "subject": "RE: Leave Approval",
+      "body": "Hello. I'm well thanks. Full-day leave please.",
+      "isDeleted": 0
+    },
+    {
+      "id": 6,
+      "mailboxId": 2,
+      "labelId": 3,
+      "received": "2021-09-11T09:25:00",
+      "from": "thoba@sample1.com",
+      "subject": "RE: Leave Approval",
+      "body": "Sure! Your leave is approved.",
+      "isDeleted": 0
+    },
+    {
+      "to": "thoba@sample1.com",
+      "subject": "Test",
+      "message": "Testing",
+      "received": 1631458303241,
+      "isDeleted": 0,
+      "id": 7
+    },
+    {
+      "to": "thoba@sample1.com",
+      "subject": "Test2",
+      "message": "Testing2",
+      "id": 8
+    },
+    {
+      "to": "thoba@sample1.com",
+      "subject": "Test3",
+      "message": "Testing3",
+      "id": 9
+    },
+    {
+      "to": "thoba@sample1.com",
+      "subject": "Test4",
+      "message": "Testing4",
+      "id": 10
+    },
+    {
+      "to": "thoba@sample1.com",
+      "subject": "Test5",
+      "message": "Testing5",
+      "id": 11
+    },
+    {
+      "to": "thoba@sample1.com",
+      "subject": "Test6",
+      "message": "Testing6",
+      "id": 12
+    },
+    {
+      "to": "thoba@sample1.com",
+      "subject": "Test6",
+      "message": "Testing6",
+      "id": 13
+    },
+    {
+      "to": "thoba@sample1.com",
+      "subject": "Test6",
+      "message": "Testing6",
+      "id": 14
+    },
+    {
+      "to": "thoba@sample1.com",
+      "subject": "Test6",
+      "message": "Testing6",
+      "body": "Testing6",
+      "received": "2021-09-12T17:55:47+02:00",
+      "isDeleted": 0,
+      "mailboxId": 1,
+      "id": 15
+    },
+    {
+      "to": "thoba@sample1.com",
+      "subject": "Test7",
+      "body": "Testing7",
+      "received": "2021-09-12T17:58:49+02:00",
+      "isDeleted": 0,
+      "mailboxId": 1,
+      "id": 16
+    },
+    {
+      "from": "thoba@sample2.com",
+      "subject": "Test8",
+      "body": "Testing8",
+      "received": "2021-09-12T18:31:45+02:00",
+      "isDeleted": 0,
+      "mailboxId": 1,
+      "id": 17
+    }
+  ]
 }

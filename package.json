@@ -1,0 +1,32 @@
+{
+  "name": "email-api",
+  "version": "1.0.0",
+  "description": "An email api that keeps track of imaginary inboxes and the emails that get sent between the inboxes.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thobashangase/email-api.git"
+  },
+  "keywords": [
+    "email",
+    "api",
+    "email-api"
+  ],
+  "author": "Thoba Shangase",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thobashangase/email-api/issues"
+  },
+  "homepage": "https://github.com/thobashangase/email-api#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-validator": "^6.12.1",
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {
+    "json-server": "^0.16.3"
+  }
+}

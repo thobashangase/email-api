@@ -1,0 +1,14 @@
+{
+    "/api/*": "/$1",
+    "/mailboxes/:id/messages": "/mailboxes/:id?_embed=messages",
+    "/mailboxes/:id/messages/:messageid": "/mailboxes/:id/messages?id=:messageid",
+    "/mailboxes/:id/messages/:messageid/setlabel/:labelid": "/mailboxes/:id/messages/:messageid/setlabel?message.labelId=:labelid",
+    "/mailboxes/:id/messages/:messageid/removelabel": "/mailboxes/:id/messages/:messageid/removelabel",
+    "/mailboxes/:id/messages/from/:from": "/mailboxes/:id/messages?from=:from",
+    "/mailboxes/:id/messages/deleted": "/mailboxes/:id/messages?isDeleted=1",
+    "/mailboxes/:id/messages/delete/:messageid": "/mailboxes/:id/messages?message.id=:messageid",
+    "/mailboxes/:id/messages/recover/:messageid": "/mailboxes/:id/messages?message.id=:messageid",
+    "/mailboxes/:id/labels": "/mailboxes/:id?_embed=labels",
+    "/labels/:label": "/labels?label=:label",
+    "/labels/:id/messages": "/labels/:id?_embed=messages"    
+}
