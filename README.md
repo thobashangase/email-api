@@ -258,5 +258,5 @@ The endpoints for this REST API are as follows:
         "received": "2021-09-12T18:31:45+02:00",
         "isDeleted": 0,
         "mailboxId": 1,
-        "id": 17
+        "id": 9
     }

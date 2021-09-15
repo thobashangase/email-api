@@ -6,9 +6,8 @@ const path = require('path');
 const server = jsonServer.create();
 const defaultMiddleware = jsonServer.defaults();
 const moment = require('moment');
-
-//const { validate, ValidationError, Joi } = require('express-validation');
-const { check, validationResult, ValidationChain } = require('express-validator');
+const Hashids = require('hashids/cjs');
+const hashids = new Hashids();
 
 server.use(jsonServer.bodyParser);
 server.use(defaultMiddleware);
@@ -18,21 +17,9 @@ server.use(jsonServer.rewriter(routes));
 
 const router = jsonServer.router(path.join(__dirname, 'db.json'));
 
-const sendMessageValidator = [
-  check('from').notEmpty().isEmail().withMessage("'From' must be a valid email address"),
-  check('to').notEmpty().isEmail().withMessage("'To' must be a valid email address"),
-  check('subject').notEmpty().withMessage("'Subject' is required"),
-  check('message').notEmpty().withMessage("'Message' is required")
-];
-
-server.use(sendMessageValidator, (req, res, next) => {
+server.use((req, res, next) => {
     
     if (req.url.includes('/messages') && req.method === 'POST') {
-        const errors = validationResult(req);
-
-        if (!errors.isEmpty()) {
-          return res.status(400).json({ errors: errors.array() });
-        };
 
         const mailboxes = router.db.get('mailboxes').valueOf();
         const toMailbox = mailboxes.find(mb => mb.mailAddress === req.body.to);
@@ -41,9 +28,90 @@ server.use(sendMessageValidator, (req, res, next) => {
         delete req.body.message;
         delete req.body.to;
 
+        req.body.labelId = null;
         req.body.received = moment().format();
         req.body.isDeleted = 0;
         req.body.mailboxId = toMailbox !== undefined ? toMailbox.id : 0;
+    }
+
+    if (req.url.includes('/setlabel') && req.method === 'PUT') {
+      const mailboxes = router.db.get('mailboxes').valueOf();
+      const selectedMailbox = mailboxes.find(mb => mb.id === req.body.id);
+      if (!selectedMailbox) {
+        return res.status(404).json({ errors: [ { error: "Mailbox not found" } ] });
+      };
+
+      const messages = router.db.get('messages').valueOf();
+      const selectedMessage = messages.find(msg => msg.id === req.body.messageid);
+      if (!selectedMessage) {
+        return res.status(404).json({ errors: [ { error: "Message not found" } ] });
+      };
+
+      const labels = router.db.get('labels').valueOf();
+      const selectedLabel = labels.find(lb => lb.id === req.body.labelid);
+      if (!selectedLabel) {
+        return res.status(404).json({ errors: [ { error: "Label not found" } ] });
+      };
+
+      selectedMessage.labelId = req.body.labelid;
+      delete req.body.labelid;
+      delete req.body.messageid;
+      delete req.body.id;
+    }
+
+    if (req.url.includes('/removelabel') && req.method === 'PUT') {
+      const mailboxes = router.db.get('mailboxes').valueOf();
+      const selectedMailbox = mailboxes.find(mb => mb.id === req.body.id);
+      if (!selectedMailbox) {
+        return res.status(404).json({ errors: [ { error: "Mailbox not found" } ] });
+      };
+
+      const messages = router.db.get('messages').valueOf();
+      const selectedMessage = messages.find(msg => msg.id === req.body.messageid);
+      if (!selectedMessage) {
+        return res.status(404).json({ errors: [ { error: "Message not found" } ] });
+      };
+
+      selectedMessage.labelId = null;
+      delete req.body.labelid;
+      delete req.body.messageid;
+      delete req.body.id;
+    }
+
+    if (req.url.includes('/delete') && (req.method === 'PUT' || req.method === 'DELETE')) {
+      const mailboxes = router.db.get('mailboxes').valueOf();
+      const selectedMailbox = mailboxes.find(mb => mb.id === req.body.id);
+      if (!selectedMailbox) {
+        return res.status(404).json({ errors: [ { error: "Mailbox not found" } ] });
+      };
+
+      const messages = router.db.get('messages').valueOf();
+      const selectedMessage = messages.find(msg => msg.id === req.body.messageid);
+      if (!selectedMessage) {
+        return res.status(404).json({ errors: [ { error: "Message not found" } ] });
+      };
+
+      selectedMessage.isDeleted = 1;
+      delete req.body.messageid;
+      delete req.body.id;
+    }
+
+    if (req.url.includes('/recover') && (req.method === 'PUT' || req.method === 'DELETE')) {
+      const mailboxes = router.db.get('mailboxes').valueOf();
+      const selectedMailbox = mailboxes.find(mb => mb.id === req.body.id);
+      if (!selectedMailbox) {
+        return res.status(404).json({ errors: [ { error: "Mailbox not found" } ] });
+      };
+
+      const messages = router.db.get('messages').valueOf();
+      const selectedMessage = messages.find(msg => msg.id === req.body.messageid);
+      if (!selectedMessage) {
+        return res.status(404).json({ errors: [ { error: "Message not found" } ] });
+      };
+
+      selectedMessage.isDeleted = 0;
+      delete req.body.messageid;
+      delete req.body.id;
     }
 
     // Continue to JSON Server router

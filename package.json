@@ -24,6 +24,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "express-validator": "^6.12.1",
+    "hashids": "^2.2.8",
     "moment": "^2.29.1"
   },
   "devDependencies": {

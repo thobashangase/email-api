@@ -94,63 +94,13 @@
     },
     {
       "to": "thoba@sample1.com",
-      "subject": "Test",
-      "message": "Testing",
-      "received": 1631458303241,
-      "isDeleted": 0,
-      "id": 7
-    },
-    {
-      "to": "thoba@sample1.com",
-      "subject": "Test2",
-      "message": "Testing2",
-      "id": 8
-    },
-    {
-      "to": "thoba@sample1.com",
-      "subject": "Test3",
-      "message": "Testing3",
-      "id": 9
-    },
-    {
-      "to": "thoba@sample1.com",
-      "subject": "Test4",
-      "message": "Testing4",
-      "id": 10
-    },
-    {
-      "to": "thoba@sample1.com",
-      "subject": "Test5",
-      "message": "Testing5",
-      "id": 11
-    },
-    {
-      "to": "thoba@sample1.com",
-      "subject": "Test6",
-      "message": "Testing6",
-      "id": 12
-    },
-    {
-      "to": "thoba@sample1.com",
-      "subject": "Test6",
-      "message": "Testing6",
-      "id": 13
-    },
-    {
-      "to": "thoba@sample1.com",
-      "subject": "Test6",
-      "message": "Testing6",
-      "id": 14
-    },
-    {
-      "to": "thoba@sample1.com",
       "subject": "Test6",
       "message": "Testing6",
       "body": "Testing6",
       "received": "2021-09-12T17:55:47+02:00",
       "isDeleted": 0,
       "mailboxId": 1,
-      "id": 15
+      "id": 7
     },
     {
       "to": "thoba@sample1.com",
@@ -159,7 +109,7 @@
       "received": "2021-09-12T17:58:49+02:00",
       "isDeleted": 0,
       "mailboxId": 1,
-      "id": 16
+      "id": 8
     },
     {
       "from": "thoba@sample2.com",
@@ -168,7 +118,7 @@
       "received": "2021-09-12T18:31:45+02:00",
       "isDeleted": 0,
       "mailboxId": 1,
-      "id": 17
+      "id": 9
     }
   ]
 }
