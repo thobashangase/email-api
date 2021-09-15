@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/thobashangase/email-api#readme",
   "dependencies": {
+    "json-server": "^0.16.3",
     "express": "^4.17.1",
     "express-validator": "^6.12.1",
     "hashids": "^2.2.8",
