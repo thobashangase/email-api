@@ -236,20 +236,15 @@ The endpoints for this REST API are as follows:
 
 ### Request
 
-`POST /messages/`
+`POST /mailboxes/id/messages/`
 
     curl -i -H 'Accept: application/json' -d '{ "from": "thoba@sample2.com",
-    "to": "thoba@sample1.com", "subject": "Test8", "message": "Testing8" }' http://localhost:3000/messages
+    "to": "thoba@sample1.com", "subject": "Test8", "message": "Testing8" }' http://localhost:3000/mailbox/1/messages
 
 ### Response
 
     HTTP/1.1 201 Created
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 201 Created
-    Connection: close
     Content-Type: application/json
-    Location: /thing/1
-    Content-Length: 36
 
     {
         "from": "thoba@sample2.com",
@@ -259,4 +254,98 @@ The endpoints for this REST API are as follows:
         "isDeleted": 0,
         "mailboxId": 1,
         "id": 9
+    }
+
+## Delete an email message
+
+### Request
+
+`PUT /mailboxes/id/messages/delete/messageid`
+
+    curl -i -H 'Accept: application/json'  http://localhost:3000/mailboxes/1/messages/delete/1
+
+### Response
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+    {
+        "from": "thoba@sample2.com",
+        "subject": "Test8",
+        "body": "Testing8",
+        "received": "2021-09-12T18:31:45+02:00",
+        "isDeleted": 1,
+        "mailboxId": 1,
+        "id": 9
+    }
+
+## Recover a deleted email message
+
+### Request
+
+`PUT /mailboxes/id/messages/recover/messageid`
+
+    curl -i -H 'Accept: application/json'  http://localhost:3000/mailboxes/1/messages/recover/1
+
+### Response
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+    {
+        "from": "thoba@sample2.com",
+        "subject": "Test8",
+        "body": "Testing8",
+        "received": "2021-09-12T18:31:45+02:00",
+        "isDeleted": 0,
+        "mailboxId": 1,
+        "id": 9
+    }
+
+## Remove a label from an email message
+
+### Request
+
+`PUT /mailboxes/:id/messages/removelabel/:messageid`
+
+    curl -i -H 'Accept: application/json' -d '{ "messageid": 9, "id": 1 }'  http://localhost:3000/mailboxes/1/messages/removelabel/1
+
+### Response
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+    {
+        "from": "thoba@sample2.com",
+        "subject": "Test8",
+        "body": "Testing8",
+        "received": "2021-09-12T18:31:45+02:00",
+        "isDeleted": 1,
+        "mailboxId": 1,
+        "id": 9,
+        "labelId": null
+    }
+
+## Add a label to an email message
+
+### Request
+
+`PUT /mailboxes/:id/messages/setlabel/:messageid`
+
+    curl -i -H 'Accept: application/json' -d '{ "messageid": 9, "labelid": 2, "id": 1 }' http://localhost:3000/mailboxes/1/messages/setlabel/1
+
+### Response
+
+    HTTP/1.1 200 OK
+    Content-Type: application/json
+
+    {
+        "from": "thoba@sample2.com",
+        "subject": "Test8",
+        "body": "Testing8",
+        "received": "2021-09-12T18:31:45+02:00",
+        "isDeleted": 1,
+        "mailboxId": 1,
+        "id": 9,
+        "labelId": 1
     }
